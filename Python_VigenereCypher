@@ -1,0 +1,37 @@
+alpha="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#makes a string of the key that is as long as the message
+def generateKey(message, keyword): 
+  if len(message) == len(keyword): 
+    return keyword 
+  else: 
+    for i in range(len(message) -len(keyword)): 
+      keyword += keyword[i % len(keyword)]
+  return keyword
+
+def encode(message,keyword):
+  result=""
+  #we call the helper function inside of our encode and decode, becuase the input we use for the turned in assignment only calls these two
+  keyword=generateKey(message,keyword)
+  for letter in range(len(message)):
+    #as per the video hints
+    keywordCount=ord(message[letter]) #find the index of the letter in the keyword
+    alphaCount = ord(keyword[letter]) #find the index of the letter in the alphabit
+    count= (keywordCount+alphaCount)%26 # add up and get remainder when divided by 26 to loop back to the begining if needed
+    result += alpha[count]
+  return result
+
+def decode(message,keyword):
+  result=""
+   #we call the helper function inside of our encode and decode, becuase the input we use for the turned in assignment only calls these two
+  keyword=generateKey(message,keyword)
+  #we use in range rather than just message becuase we need to iterate using an integer that is the langth of the message, rather than through the message its self
+  for letter in range(len(message)):
+    #as per the video hints:
+    keywordCount=ord(message[letter])#find the index of the letter in the keyword
+    alphaCount = ord(keyword[letter])#find the index of the letter in the real alphabet
+    count= ((keywordCount-alphaCount)-26)%26 #since we are working backwards we sutract them from each other and take 26 from it before division to go the other way
+    result += alpha[count]
+  return result
+print("  ENCODED       DECODED")
+x= encode("ATTACKATDAWN","LEMON")
+print(x +"  "+decode(x,"LEMON"))
