@@ -1,0 +1,99 @@
+#
+#
+#
+#
+
+#precondition: valA and valB have to be integers
+#post condition: creates a sum, and passes the sum and the two addenends to isEven
+def sumNums(valA,valB):
+  sum = valA +valB
+  isEven(valA,valB,sum)
+  
+
+#precondition: valA have to be integers
+#post condition: creates a sum of value a and five , and passes the sum and the two addenends to isEven
+def addFive(valA):
+  added = valA+5
+  isEven( valA, 5, added)
+
+
+#precondition: passed in from above functions, and has three parameters that are all integers, the sum has to equal the two before it
+#post condition: determine if the sum is even or odd
+def isEven(a,b,total):
+  if (a+b != total):
+    print("error, invalid math addends!")
+    return
+  if (total%2 == 0):
+     print ("the sum of " + str(a) + " and " + str(b)+ " is even")
+  else:
+     print ("the sum of "+ str(a) + " and " + str(b)+" is odd")
+
+#precondition: a weekday string is made and passed in
+#post condition: determines if its a weekday, or a weekend, or if the thing entered is not a day at all
+def weekend(weekday):
+  day=weekday.lower()
+  if ( day == "sunday") or (day=="saturday"):
+    print ("its the weekend!")
+  elif ( day == "monday") or (day=="tuesday") or ( day == "wednesday") or (day=="thursday") or ( day == "friday"):
+    print ("its a week day!")
+  else:
+    print( "invalid input!")
+
+
+#valA= int(input("Enter the first value: "))
+#valB= int(input("Enter the second value: "))
+menu = "go"
+test=1
+while (menu == "go"):
+  
+  if (test==1):
+    print("Performing Progam assignment 4.2")
+    a= int(input("Enter the first value: "))
+    b= int(input("Enter the second value: "))
+    sumNums(a,b)
+    print()
+    temp =input("to move onto the next test enter 'N'. to repeat this one, enter 'R'. to stop, enter 'S' :")
+    if (temp =="N"):
+      menu ="go"
+      test=2
+  
+    if (temp == "R"):
+      menu = "go"
+      test =1
+    if (temp== "S"):
+      menu="stop"
+    else:
+      menu = "go"
+
+
+  if(test==2):
+    print()
+    print("Performing Progam assignment 4.3")
+    c= int(input("Enter the value: "))
+    addFive(c)
+    temp =input("to move onto the next test enter 'N'. to repeat this one, enter 'R'. to stop, enter 'S' :")
+    if (temp =="N"):
+      menu ="go"
+      test=3
+  
+    if (temp == "R"):
+      menu = "go"
+      test =2
+    if (temp=="S"):
+      menu="stop"
+    else:
+      menu="go"
+      
+  if (test==3):
+    print()
+    print("Performing Progam assignment 4.5")
+    day= input("Enter the day of the week: ")
+    weekend(day)
+    temp =input("to repeat this test, enter 'R'. to stop running, enter 'S': ")
+    if (temp == "R"):
+      menu = "go"
+      test =3
+    if (temp== "S"):
+      menu="stop"
+    else:
+      menu = "go"
