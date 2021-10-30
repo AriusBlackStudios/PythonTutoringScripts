@@ -1,0 +1,22 @@
+n=13
+def is_prime(n):
+  divisors= []
+  isDivisible=False
+  for i in range(n-1,1,-1):
+    if (n%i == 0):
+     divisors.append(i);
+     isDivisible= True
+
+  if isDivisible==False:
+    print (" "+ str(n) + " is prime")
+
+  else:
+    a= n/divisors[1]
+    b =divisors[1]
+    print ( " " + str(n) + " is not prime. " +str(a)+ "* " +str(b)+ " = " +str(n)+ " ")
+
+
+is_prime(n)
+is_prime(10)
+is_prime(7)
+is_prime(15)
